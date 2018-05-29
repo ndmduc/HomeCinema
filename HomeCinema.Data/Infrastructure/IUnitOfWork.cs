@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HomeCinema.Data
+namespace HomeCinema.Data.Infrastructure
 {
-    public class IEntityBase
+    public interface IUnitOfWork
     {
+        void Commit();
     }
 }

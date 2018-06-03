@@ -21,7 +21,7 @@ namespace HomeCinema.App_Start
 
         public static void Initialize(HttpConfiguration config)
         {
-
+            Initialize(config, RegisterServices(new ContainerBuilder()));
         }
 
         public static void Initialize(HttpConfiguration config, IContainer container)

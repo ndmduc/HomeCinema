@@ -204,7 +204,13 @@
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\spa\home\rootCtrl.js" />
+    <Content Include="Scripts\spa\layout\sideBar.directive.js" />
+    <Content Include="Scripts\spa\layout\sidebar.html" />
+    <Content Include="Scripts\spa\layout\topBar.directive.js" />
+    <Content Include="Scripts\spa\layout\topBar.html" />
     <Content Include="Scripts\spa\modules\common.core.js" />
+    <Content Include="Scripts\spa\services\notificationService.js" />
     <Content Include="Scripts\vendors\angucomplete-alt.min.js" />
     <Content Include="Scripts\vendors\angular-base64.js" />
     <Content Include="Scripts\vendors\angular-cookies.js" />

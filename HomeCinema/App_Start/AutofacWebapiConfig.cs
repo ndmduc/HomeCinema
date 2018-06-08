@@ -46,7 +46,7 @@ namespace HomeCinema.App_Start
                     .As<IUnitOfWork>()
                     .InstancePerRequest();
 
-            builder.RegisterType(typeof(EntityBaseRepository<>))
+            builder.RegisterGeneric(typeof(EntityBaseRepository<>))
                     .As(typeof(IEntityBaseRepository<>))
                     .InstancePerRequest();
 

@@ -210,6 +210,7 @@
     <Content Include="Scripts\spa\layout\topBar.directive.js" />
     <Content Include="Scripts\spa\layout\topBar.html" />
     <Content Include="Scripts\spa\modules\common.core.js" />
+    <Content Include="Scripts\spa\services\apiService.js" />
     <Content Include="Scripts\spa\services\notificationService.js" />
     <Content Include="Scripts\vendors\angucomplete-alt.min.js" />
     <Content Include="Scripts\vendors\angular-base64.js" />
@@ -243,8 +244,12 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Infrastructure\Core\ApiControllerBase.cs" />
     <Compile Include="Infrastructure\Extensions\RequestMessageExtensions.cs" />
     <Compile Include="Infrastructure\MessageHandlers\HomeCinemaAuthHandler.cs" />
+    <Compile Include="Infrastructure\Validators\MovieViewModelValidator.cs" />
+    <Compile Include="Models\GenreViewModel.cs" />
+    <Compile Include="Models\MovieViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -276,7 +281,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\HomeCinema.Data\HomeCinema.Data.csproj">

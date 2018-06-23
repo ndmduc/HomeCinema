@@ -10,14 +10,15 @@ using System.Web.Routing;
 
 namespace HomeCinema
 {
-    public class MvcApplication : System.Web.HttpApplication
+    public class Global : System.Web.HttpApplication
     {
         protected void Application_Start()
         {
             var config = GlobalConfiguration.Configuration;
 
             AreaRegistration.RegisterAllAreas();
-            WebApiConfig.Register(config);
+           // WebApiConfig.Register(config);
+            GlobalConfiguration.Configure(WebApiConfig.Register);
             Bootstrapper.Run();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
 

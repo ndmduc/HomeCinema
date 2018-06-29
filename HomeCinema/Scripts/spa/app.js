@@ -51,6 +51,10 @@
                 templateUrl: "scripts/spa/rental/index.html",
                 controller: "rentStatsCtrl"
             })
+            .when("/customers", {
+                templateUrl: "scripts/spa/customers/customers.html",
+                controller: "customersCtrl"
+            })
             .otherwise({ redirectTo: "/" });
     }
 

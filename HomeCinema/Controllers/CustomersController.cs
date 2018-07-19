@@ -26,6 +26,7 @@ namespace HomeCinema.Controllers
             this.customerRepo = customerRepository;
         }
 
+        
         [HttpGet]
         [Route("search/{page:int=0}/{pageSize=4}/{filter?}")]
         public HttpResponseMessage Search(HttpRequestMessage request, int? page, int? pageSize, string filter = null)

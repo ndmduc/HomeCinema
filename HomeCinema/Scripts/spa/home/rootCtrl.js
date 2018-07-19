@@ -14,7 +14,7 @@
             $scope.userData.isUserLoggedIn = membershipService.isUserLoggedIn();
 
             if ($scope.userData.isUserLoggedIn) {
-                $scope.username = $rootScope.repository.loggerUser.username;
+                $scope.username = $rootScope.repository.loggedUser.username;
             }
         }
 

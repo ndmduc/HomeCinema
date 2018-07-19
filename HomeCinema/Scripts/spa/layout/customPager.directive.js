@@ -1,7 +1,7 @@
 ﻿(function (app) {
     'use strict';
 
-    app.directive('customerPager', customerPager);
+    app.directive('customPager', customerPager);
 
     function customerPager() {
         return {
@@ -27,9 +27,25 @@
                         return [];
                     }
                     var step = 2;
+                    var doubleStep = step * 2;
+                    var start = Math.max(0, $scope.page - step);
+                    var end = start + 1 + doubleStep;
+                    if (end > $scope.pagesCount) {
+                        end = $scope.pagesCount;
+                    }
 
+                    var ret = [];
+                    for (var i = start; i != end; i++) {
+                        ret.push(i);
+                    }
+
+                    return ret;
+                }
+
+                $scope.pagePlus = function (count) {
+                    return +$scope.page + count;
                 }
             }]
         }
     }
-})
+})(angular.module('common.ui'));

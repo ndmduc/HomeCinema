@@ -3,7 +3,73 @@
         Edit {{EditedCustomer.FirstName}} {{EditedCustomer.LastName}}
     </div>
 
-    <div class="panel-body"></div>
+    <div class="panel-body">
+        <form role="form" novalidate angular-validator name="addCustomerForm" angular-validator-submit="Register()">
+            <div>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <label class="control-label" for="firstName">First Name</label>
+                            <input type="text" class="form-control" ng-model="EditedCustomer.FirstName" name="firstName" 
+                                id="firstName" placeholder="First Name" validate-on="blur" required required-message="'First name is required'" />
+                        </div>
 
-    <div class="panel-footer"></div>
+                        <div class="col-sm-6 selectContainer">
+                            <label class="control-label" for="lastName">Last Name</label>
+                            <input type="text" class="form-control" ng-model="EditedCustomer.LastName" name="lastName"
+                                id="lastName" placeholder="Last Name" validate-on="blur" required required-message="'Last Name is required'" />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <label class="control-label" for="email">Email Address</label>
+                            <input type="email" class="form-control" ng-model="EditedCustomer.Email" name="email" 
+                                id="email" placeholder="Email" validate-on="blur" required required-message="'Email is required'" />
+                        </div>
+
+                        <div class="col-sm-6 selectContainer">
+                            <label class="control-label" for="IdentityCard">Identity Card</label>
+                            <input type="text" class="form-control" ng-model="EditedCustomer.IdentityCard" name="identityCard"
+                                id="identityCard" placeholder="Identity Card" validate-on="blur" required required-message="'IdentityCard is required'" />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <label class="control-label" for="mobilePhone">Mobile</label>
+                            <input type="text" class="form-control" ng-model="EditedCustomer.Mobile" name="mobilePhone" 
+                                id="mobilePhone" placeholder="mobilePhone" validate-on="blur" required required-message="'Mobile Phone is required'" />
+                        </div>
+
+                        <div class="col-sm-6 selectContainer">
+                            <label class="control-label" for="dateOfBirth">Date of Birth</label>
+                            <p class="input-group">
+                                <input type="text" class="form-control" ng-model="EditedCustomer.DateOfBirth" name="dateOfBirth" datepicker-popup="{{format}}"
+                                    is-open="datepicker.opened" datepicker-options="dateOptions" ng-required="true" datepicker-append-to-body="true" close-text="Close"
+                                    id="dateOfBirth" placeholder="Date of Birth" validate-on="blur" required required-message="'Date of Birth is required'" />
+
+                                <span class="input-group-btn">
+                                    <button type="button" class="btn btn-default" ng-click="openDatePicker($event)">
+                                        <i class="glyphicon glyphicon-calendar"></i>
+                                    </button>
+                                </span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <div class="panel-footer clearfix">
+        <div class="pull-right">
+            <button type="button" class="btn btn-danger" ng-click="cancelEdit()">Cancel</button>
+            <button type="button" class="btn btn-primary" ng-click="updateCustomer()">Update</button>
+        </div>
+    </div>
 </div>

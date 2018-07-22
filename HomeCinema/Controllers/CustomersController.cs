@@ -11,6 +11,9 @@ using HomeCinema.Entities;
 using System.Net.Http;
 using HomeCinema.Models;
 using System.Net;
+using AutoMapper;
+using HomeCinema.Infrastructure.Extensions;
+using HomeCinema.Data.Extensions;
 
 namespace HomeCinema.Controllers
 {
@@ -70,6 +73,69 @@ namespace HomeCinema.Controllers
                 };
 
                 response = request.CreateResponse<PaginationSet<CustomerViewModel>>(HttpStatusCode.OK, pagedSet);
+                return response;
+            });
+        }
+
+        [HttpPost]
+        [Route("update")]
+        public HttpResponseMessage Update(HttpRequestMessage request, CustomerViewModel customer){
+            return CreateHttpResponse(request, () =>
+            {
+                HttpResponseMessage response = null;
+
+                if (!ModelState.IsValid)
+                {
+                    response = request.CreateResponse(HttpStatusCode.BadRequest, ModelState.Keys.SelectMany(k => ModelState[k].Errors)
+                                                                                                .Select(m => m.ErrorMessage).ToArray());
+                }
+                else
+                {
+                    Customer _customer = this.customerRepo.GetSingle(customer.ID);
+                    _customer.UpdateCustomer(customer);
+
+                    this.unitOfWork.Commit();
+                    response = request.CreateResponse(HttpStatusCode.OK);
+                }
+
+                return response;
+            });
+        }
+
+        [HttpPost]
+        [Route("register")]
+        public HttpResponseMessage Register(HttpRequestMessage request, CustomerViewModel customer)
+        {
+            return CreateHttpResponse(request, () =>
+            {
+                HttpResponseMessage response = null;
+                if (!ModelState.IsValid)
+                {
+                    response = request.CreateResponse(HttpStatusCode.BadRequest, ModelState.Keys.SelectMany(k => ModelState[k].Errors)
+                        .Select(m => m.ErrorMessage).ToArray());
+                }
+                else
+                {
+                    if(this.customerRepo.UserExists(customer.Email, customer.IdentifyCard))
+                    {
+                        ModelState.AddModelError("Invalid user", "Email or Identify Card number already exists.");
+                        response = request.CreateResponse(HttpStatusCode.BadRequest, ModelState.Keys.SelectMany(k => ModelState[k].Errors)
+                            .Select(m => m.ErrorMessage).ToArray());
+
+                    }
+                    else
+                    {
+                        Customer newCustomer = new Customer();
+                        newCustomer.UpdateCustomer(customer);
+                        this.customerRepo.Add(newCustomer);
+
+                        this.unitOfWork.Commit();
+
+                        // Update view model
+                        customer = Mapper.Map<Customer, CustomerViewModel>(newCustomer);
+                        response = request.CreateResponse(HttpStatusCode.Created, customer);
+                    }
+                }
                 return response;
             });
         }

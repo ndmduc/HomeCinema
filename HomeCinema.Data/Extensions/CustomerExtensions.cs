@@ -14,5 +14,12 @@ namespace HomeCinema.Data.Extensions
         {
             return customerRepo.GetAll().Any(c => c.Email == email || c.IdentifyCard.ToLower() == identityCard.ToLower());
         }
+
+        public static string GetCustomerFullName(this IEntityBaseRepository<Customer> customerRepo, int customerId)
+        {
+            string customerName = string.Empty;
+            var customer = customerRepo.GetSingle(customerId);
+            return customer.FirstName + " " + customer.LastName;
+        }
     }
 }

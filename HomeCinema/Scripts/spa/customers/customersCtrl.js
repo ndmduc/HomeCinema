@@ -49,7 +49,7 @@
             $scope.loadingCustomers = false;
 
             if ($scope.filterCustomers && $scope.filterCustomers.length) {
-                notificationService.displayInfo(resul.data.Items.length + ' customers found.');
+                notificationService.displayInfo(result.data.Items.length + ' customers found.');
             }
         }
 

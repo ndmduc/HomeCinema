@@ -32,7 +32,7 @@
                 controller: "customersRegCtrl"
             })
             .when("/movies", {
-                templateUrl: "scripts/spa/movies/index.html",
+                templateUrl: "scripts/spa/movies/movies.html",
                 controller: "moviesCtrl"
             })
             .when("/movies/add", {

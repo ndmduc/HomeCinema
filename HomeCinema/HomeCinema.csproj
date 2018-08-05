@@ -228,8 +228,10 @@
     <Content Include="Scripts\spa\layout\topBar.html" />
     <Content Include="Scripts\spa\modules\common.core.js" />
     <Content Include="Scripts\spa\movies\details.html" />
+    <Content Include="Scripts\spa\movies\movieDetailsCtrl.js" />
     <Content Include="Scripts\spa\movies\movies.html" />
     <Content Include="Scripts\spa\movies\moviesCtrl.js" />
+    <Content Include="Scripts\spa\rental\rentMovieModal.html" />
     <Content Include="Scripts\spa\services\apiService.js" />
     <Content Include="Scripts\spa\services\membershipService.js" />
     <Content Include="Scripts\spa\services\notificationService.js" />

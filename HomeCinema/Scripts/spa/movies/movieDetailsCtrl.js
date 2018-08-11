@@ -19,12 +19,22 @@
 
         function loadMovie() {
             $scope.loadingMovie = true;
-            apiService.get('/api/movies/details/', $routeParams.id, null, movieLoadCompleted, movieLoadFailed);
+            var config = {
+                params: {
+                    id: $routeParams.id
+                }
+            };
+            apiService.get('/api/movies/details/', config, movieLoadCompleted, movieLoadFailed);
         }
 
         function loadRentalHistory() {
             $scope.loadingRentals = true;
-            apiService.get('/api/rentals/' + $routeParams.id + '/rentalhistory', null, rentalHistoryLoadCompleted, rentalHistoryLoadFailed);
+            var config = {
+                params: {
+                    id: $routeParams.id
+                }
+            };
+            apiService.post('/api/rentals/rentalhistory/', config, rentalHistoryLoadCompleted, rentalHistoryLoadFailed);
         }
 
         function loadMovieDetails() {
@@ -33,7 +43,7 @@
         }
 
         function returnMovie(rentalID) {
-            apiService.post('/api/rentals/return/' + rentalID, null, returnMovieSucceeded, returnMovieFailed);
+            apiService.post('/api/rentals/return/' + rentalID, returnMovieSucceeded, returnMovieFailed);
         }
 
         function isBorrowed(rental) {
@@ -98,5 +108,7 @@
                 loadMovieDetails();
             }, function () { });
         }
+
+        loadMovieDetails();
     }
 })(angular.module('homeCinema'));

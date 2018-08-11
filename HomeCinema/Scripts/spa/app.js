@@ -41,7 +41,7 @@
             })
             .when("/movies/:id", {
                 templateUrl: "scripts/spa/movies/details.html",
-                controller: "movieDetailCtrl"
+                controller: "movieDetailsCtrl"
             })
             .when("/movies/edit/:id", {
                 templateUrl: "scripts/spa/movies/edit.html",

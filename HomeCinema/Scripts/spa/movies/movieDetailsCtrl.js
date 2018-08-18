@@ -31,10 +31,13 @@
             $scope.loadingRentals = true;
             var config = {
                 params: {
-                    id: $routeParams.id
+                    movieid: $routeParams.id
                 }
             };
-            apiService.post('/api/rentals/rentalhistory/', config, rentalHistoryLoadCompleted, rentalHistoryLoadFailed);
+            apiService.get('/api/rentals/rentalhistory/', config, rentalHistoryLoadCompleted, rentalHistoryLoadFailed);
+            //apiService.get('/api/rentals/' + $routeParams.id + '/rentalhistory', null,
+            //            rentalHistoryLoadCompleted,
+            //            rentalHistoryLoadFailed);
         }
 
         function loadMovieDetails() {
@@ -87,16 +90,6 @@
 
         function returnMovieFailed(response) {
             notificationService.displayError(response.data);
-        }
-
-        function openRentDialog() {
-            $modal.open({
-                templateUrl: 'scripts/spa/rental/rentMovieModal.html',
-                controller: 'rentMovieCtrl',
-                scope: $scope
-            }).result.then(function ($scope) {
-                loadMovieDetails();
-            }, function () { });
         }
 
         function openRentDialog() {

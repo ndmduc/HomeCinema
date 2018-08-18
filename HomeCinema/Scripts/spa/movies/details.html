@@ -8,7 +8,7 @@
         <br />
 
         <div class="btn-group">
-            <button ng-if="movie.IsAvailable" type="button" ng-click="opentRentDialog()"
+            <button ng-if="movie.IsAvailable" type="button" ng-click="openRentDialog()"
                     class="btn btn-sm btn-primary">
                 Rent movie <i class="fa fa-book pull-right"></i>
             </button>
@@ -28,21 +28,22 @@
 
             <div class="panel-body" ng-if="!loadingMovie">
                 <div class="media">
-                    <a class="pull-left" ng-href="#/movies/{{movie.ID}}" title="View {{movie.Title}} details">
+                    <a class="pull-right" ng-href="#/movies/{{movie.ID}}" title="View {{movie.Title}} details">
                         <img class="media-object" height="120" ng-src="../../Content/images/movies/{{movie.Image}}" alt="" />
                     </a>
-                </div>
 
-                <div class="media-body">
-                    <h4 class="media-heading">{{movie.Title}}</h4>
-                    Directed by: <label>{{movie.Director}}</label><br />
-                    Written by: <label>{{movie.Writer}}</label><br />
-                    Produced by: <label>{{movie.Producer}}</label><br />
-                    Rating: <span component-rating='{{movie.Rating}}'></span>
-                    <br />
 
-                    <label class="label label-info">{{movie.Genre}}</label>
-                    <available-movie is-available="{{movie.IsAvailable}}"></available-movie>
+                    <div class="media-body">
+                        <h4 class="media-heading">{{movie.Title}}</h4>
+                        Directed by: <label>{{movie.Director}}</label><br />
+                        Written by: <label>{{movie.Writer}}</label><br />
+                        Produced by: <label>{{movie.Producer}}</label><br />
+                        Rating: <span component-rating='{{movie.Rating}}'></span>
+                        <br />
+
+                        <label class="label label-info">{{movie.Genre}}</label>
+                        <available-movie is-available="{{movie.IsAvailable}}"></available-movie>
+                    </div>
                 </div>
             </div>
 

@@ -33,14 +33,14 @@ namespace HomeCinema.Controllers
             this.moviesRepo = moviesRepo;
         }
 
-        //[HttpGet]
-        [Route("rentalhistory/{id}")]
+        [HttpGet]
+        [Route("rentalhistory/{id:int}")]
         public HttpResponseMessage RentalHistory(HttpRequestMessage request, int id)
         {
             return CreateHttpResponse(request, () =>
             {
                 HttpResponseMessage response = null;
-                List<RentalHistoryViewModel> rentalHistory = GetMovieRentalHistory(4);
+                List<RentalHistoryViewModel> rentalHistory = GetMovieRentalHistory(id);
                 response = request.CreateResponse<List<RentalHistoryViewModel>>(HttpStatusCode.OK, rentalHistory);
                 return response;
             });

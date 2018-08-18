@@ -1,10 +1,23 @@
-﻿<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8" />
-    <title></title>
-</head>
-<body>
+﻿<div class="panel panel-primary">
+    <div class="panel-heading">
+        Rent {{movie.Title}}
+    </div>
 
-</body>
-</html>
+    <div class="panel-body">
+        <form class="form-horizontal" role="form">
+            <div class="form-group">
+                <div class="col-xs-8 selectContainer">
+                    <label class="control-label">Available Stock items</label>
+                    <select ng-model="selectedStockItem" class="form-control black" 
+                            ng-options="option.ID as option.UniqueKey for option in stockItems" required></select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-xs-8">
+                    <label class="control-label">Select customer</label>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

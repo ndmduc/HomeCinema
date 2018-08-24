@@ -1,4 +1,5 @@
-﻿using HomeCinema.Data.Extensions;
+﻿using AutoMapper;
+using HomeCinema.Data.Extensions;
 using HomeCinema.Data.Infrastructure;
 using HomeCinema.Data.Repositories;
 using HomeCinema.Entities;
@@ -67,6 +68,48 @@ namespace HomeCinema.Controllers
                     response = request.CreateResponse(HttpStatusCode.OK);
                 }
 
+                return response;
+            });
+        }
+
+        [HttpPost]
+        [Route("rent/{customerId:int}/{stockId:int}")]
+        public HttpResponseMessage Rent(HttpRequestMessage request, int customerId, int stockId)
+        {
+            return CreateHttpResponse(request, () =>
+            {
+                HttpResponseMessage response = null;
+                var customer = this.customersRepo.GetSingle(customerId);
+                var stock = this.stocksRepo.GetSingle(stockId);
+                if (customer==null || stock==null)
+                {
+                    response = request.CreateErrorResponse(HttpStatusCode.NotFound, "Invalid Customer or Stock");
+                }
+                else
+                {
+                    if (stock.IsAvailable)
+                    {
+                        Rental rental = new Rental
+                        {
+                            CustomerId = customerId,
+                            StockId = stockId,
+                            RentalDate = DateTime.Now,
+                            Status = "Borrowed"
+                        };
+
+                        this.rentalsRepo.Add(rental);
+
+                        stock.IsAvailable = false;
+                        this.unitOfWork.Commit();
+                        RentalViewModel rentalVm = Mapper.Map<Rental, RentalViewModel>(rental);
+                        response = request.CreateResponse(HttpStatusCode.Created, rentalVm);
+                    }
+                    else
+                    {
+                        response = request.CreateErrorResponse(HttpStatusCode.BadRequest, "Selected stock is not available anymore");
+
+                    }
+                }
                 return response;
             });
         }

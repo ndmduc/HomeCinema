@@ -35,6 +35,9 @@ namespace HomeCinema.Infrastructure.Mappings
 
             CreateMap<Customer, CustomerViewModel>();
 
+            CreateMap<Stock, StockViewModel>();
+
+            CreateMap<Rental, RentalViewModel>();
         }
     }
 }

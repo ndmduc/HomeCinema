@@ -37,6 +37,8 @@ namespace HomeCinema.Models
 
         public bool IsAvailable { get; set; }
 
+        public int NumberOfStocks { get; set; }
+
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {
             var validator = new MovieViewModelValidator();

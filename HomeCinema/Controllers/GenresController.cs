@@ -30,6 +30,14 @@ namespace HomeCinema.Controllers
         {
             return CreateHttpResponse(request, () =>
             {
+                
+                var session = HttpContext.Current.Session;
+                if (session != null)
+                {
+                    if (session["username"] == null)
+                        session["username"] = "sa:" + DateTime.Now.ToString();
+                }
+
                 HttpResponseMessage response = null;
                 var genres = this.genreRepo.GetAll().ToList();
 

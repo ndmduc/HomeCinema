@@ -235,6 +235,8 @@
     <Content Include="Scripts\spa\movies\movieEditCtrl.js" />
     <Content Include="Scripts\spa\movies\movies.html" />
     <Content Include="Scripts\spa\movies\moviesCtrl.js" />
+    <Content Include="Scripts\spa\rental\rental.html" />
+    <Content Include="Scripts\spa\rental\rentalStatsCtrl.js" />
     <Content Include="Scripts\spa\rental\rentMovieCtrl.js" />
     <Content Include="Scripts\spa\rental\rentMovieModal.html" />
     <Content Include="Scripts\spa\services\apiService.js" />
@@ -294,6 +296,8 @@
     <Compile Include="Infrastructure\Validators\MovieViewModelValidator.cs" />
     <Compile Include="Infrastructure\Validators\RegistrationViewModelValidator.cs" />
     <Compile Include="Infrastructure\Validators\StockViewModelValidator.cs" />
+    <Compile Include="Models\RentalHistoryPerDate.cs" />
+    <Compile Include="Models\TotalRentalHistoryViewModel.cs" />
     <Compile Include="Models\CustomerViewModel.cs" />
     <Compile Include="Models\GenreViewModel.cs" />
     <Compile Include="Models\LoginViewModel.cs" />

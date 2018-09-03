@@ -18,11 +18,11 @@ namespace HomeCinema
             //routes.MapMvcAttributeRoutes();
 
             // Web API Stateless Route Configurations
-            routes.MapHttpRoute(
-                name: "DefaultApi",
-                routeTemplate: "api/{controller}/{id}",
-                defaults: new { id = RouteParameter.Optional }
-            ).RouteHandler = new SessionStateRouteHandler();
+            //routes.MapHttpRoute(
+            //    name: "DefaultApi",
+            //    routeTemplate: "api/{controller}/{id}",
+            //    defaults: new { id = RouteParameter.Optional }
+            //).RouteHandler = new SessionStateRouteHandler();
 
             routes.MapRoute(
                 name: "Default",

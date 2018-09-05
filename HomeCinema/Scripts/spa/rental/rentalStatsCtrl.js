@@ -42,6 +42,6 @@
             notificationService.displayError(response.data);
         }
 
-        loadingStatistics();
+        loadStatistics();
     }
 })(angular.module('homeCinema'));

@@ -49,7 +49,7 @@
                 controller: "movieEditCtrl"
             })
             .when("/rental", {
-                templateUrl: "scripts/spa/rental/index.html",
+                templateUrl: "scripts/spa/rental/rental.html",
                 controller: "rentStatsCtrl"
             })
             .when("/customers", {

@@ -61,7 +61,7 @@ namespace HomeCinema.App_Start
                 "~/Scripts/spa/movies/movieEditCtrl.js",
                 "~/Scripts/spa/controllers/rentalCtrl.js",
                 "~/Scripts/spa/rental/rentMovieCtrl.js",
-                "~/Scripts/spa/rental/rentStatsCtrl.js"
+                "~/Scripts/spa/rental/rentalStatsCtrl.js"
                 ));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
